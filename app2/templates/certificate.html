@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    :root {
+        --main-color: #58207b;
+        --black: #555;
+        --light-color: black;
+        --bg: #f1eef5;
+        --border: .1rem solid rgba(0, 0, 0, .1);
+        --box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    }
+
+    * {
+        font-family: 'Nunito', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all .3s ease-out;
+    }
+
+    html {
+        font-size: 62.5%;
+        scroll-behavior: smooth;
+        scroll-padding-top: 9rem;
+        overflow-x: hidden;
+    }
+
+    section {
+        padding: 2rem 9%;
+    }
+
+    .heading {
+        text-align: center;
+        padding-bottom: 3rem;
+        font-size: 4rem;
+        color: var(--black);
+    }
+
+    .heading span {
+        color: var(--main-color);
+        border-radius: .5rem;
+        background: var(--bg);
+        padding: 0 1.5rem;
+    }
+
+    .btn {
+        margin-top: 1rem;
+        display: inline-block;
+        padding: .8rem 3rem;
+        font-size: 1.7rem;
+        cursor: pointer;
+        color: #fff;
+        background-color:rgb(129, 61, 255) ;
+        border-radius: .3rem;
+        box-shadow: var(--box-shadow);
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 0%;
+        background: rgb(30, 110, 216);
+        z-index: -1;
+        transition: .2s ease-out;
+    }
+
+    .btn:hover::before {
+        left: 0;
+        width: 100%;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: #fff;
+        box-shadow: var(--box-shadow);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 9%;
+    }
+
+    .header .logo {
+        font-size: 2.5rem;
+        color: var(--black);
+        font-weight: bolder;
+    }
+
+    .header .navbar a {
+        font-size: 1.7rem;
+        color: var(--light-color);
+        margin-left: 2rem;
+    }
+
+    .header .navbar a:hover {
+        color: var(--main-color);
+    }
+
+    #menu-btn {
+        cursor: pointer;
+        font-size: 2.5rem;
+        padding: 1rem 1.3rem;
+        border-radius: .5rem;
+        color: var(--main-color);
+        background: var(--bg);
+        display: none;
+    }
+
+    #menu-btn:hover {
+        color: #fff;
+        background: var(--main-color);
+    }
+
+    .home {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding-top: 10rem;
+        background: var(--bg);
+        position: relative;
+    }
+
+    .home .content {
+        width: 100%;
+       background-color:lavender;
+    }
+    
+    .home .image {
+        flex: 1 1 45rem;
+    }
+
+    .home .image img {
+        width: 100%;
+    }
+
+    .home .content h3 {
+        font-size: 4rem;
+        font-weight: bold;
+        color: var(--main-color);
+        line-height: 1.8;
+    }
+
+    .home .content h4 {
+        color:black;
+        font-size: 2rem;
+    }
+    .home .content h1 {
+        color: blueviolet;
+        font-size: 2rem;
+    }
+    .home .content h5 {
+        font-size: 2rem;
+
+        color: red;
+        line-height: 1.8;
+    }
+
+    .home .content p {
+        font-size: 4rem;
+        color: brown;
+        line-height: 1.8;
+        padding: 0rem 0;
+    }
+
+    .home .cloud {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 18rem;
+        background-size: 250rem 18rem;
+        background: url(../images/cloud.png) repeat-x;
+        animation: cloud 10s linear infinite;
+    }
+
+    @keyframes cloud {
+        0% {
+            background-position-x: 0rem;
+        }
+
+        100% {
+            background-position-x: -250rem;
+        }
+    }
+
+    .home .cloud-1 {
+        opacity: .5;
+        height: 20rem;
+        background-size: 250rem 20rem;
+        animation-direction: reverse;
+        animation-duration: 15s;
+    }
+
+
+
+    .content {
+        width: 26%;
+        margin: 15px;
+        box-sizing: border-box;
+        float: left;
+        text-align: center;
+        border-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-top: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: .4s;
+        background-color: white;
+    }
+
+    .content:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+        transform: translate(0px, -8px);
+        transition: .6s;
+    }
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    } 
+    nav{
+      display: flex;
+      height: 80px;
+      width: 100%;
+      background:rgb(92, 63, 219);
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px 0 100px;
+      flex-wrap: wrap;
+    }
+    nav .logo{
+      color: #fff;
+      font-size: 35px;
+      font-weight: 600;
+      margin-left: -40px;
+    }
+    nav ul{
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    nav ul li{
+      margin: 0 5px;
+    }
+    nav ul li a{
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+      color: #111;
+      background: rgb(255, 255, 255);
+    }
+    nav .menu-btn i{
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: none;
+    }
+    input[type="checkbox"]{
+      display: none;
+    }
+    @media (max-width: 1000px){
+      nav{
+        padding: 0 40px 0 50px;
+      }
+    }
+    @media (max-width: 920px) {
+      nav .menu-btn i{
+        display: block;
+      }
+      #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+      }
+      nav ul{
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #111;
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+      }
+      #click:checked ~ ul{
+        left: 0;
+      }
+      nav ul li{
+        width: 100%;
+        margin: 40px 0;
+      }
+      nav ul li a{
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        
+      }
+      #click:checked ~ ul li a{
+        margin-left: 0px;
+      }
+      nav ul li a.active,
+      nav ul li a:hover{
+        background: none;
+        color: rgb(240, 154, 25);
+      }
+    } 
+
+
+
+    /* media queries  */
+    @media (max-width:991px) {
+
+        html {
+            font-size: 55%;
+        }
+
+        .header {
+            padding: 2rem;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+    }
+
+    @media (max-width:768px) {
+
+        #menu-btn {
+            display: initial;
+        }
+
+        .header .navbar {
+            position: absolute;
+            top: 115%;
+            right: 2rem;
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            border: var(--border);
+            border-radius: .5rem;
+            width: 30rem;
+            transform: scale(0);
+            transform-origin: top right;
+            opacity: 0;
+        }
+
+        .header .navbar.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .header .navbar a {
+            font-size: 2rem;
+            display: block;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: .5rem;
+        }
+
+        .header .navbar a:hover {
+            background: var(--bg);
+        }
+
+        .home .content {
+            text-align: center;
+        }
+
+    }
+
+    @media (max-width:450px) {
+
+        html {
+            font-size: 50%;
+        }
+    }
+
+
+
+
+
+
+    /* media queries  */
+    @media (max-width:991px) {
+
+        html {
+            font-size: 55%;
+        }
+
+        .header {
+            padding: 2rem;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+    }
+
+    @media (max-width:768px) {
+
+        #menu-btn {
+            display: initial;
+        }
+
+        .header .navbar {
+            position: absolute;
+            top: 115%;
+            right: 2rem;
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            border: var(--border);
+            border-radius: .5rem;
+            width: 30rem;
+            transform: scale(0);
+            transform-origin: top right;
+            opacity: 0;
+        }
+
+        .header .navbar.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .header .navbar a {
+            font-size: 2rem;
+            display: block;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: .5rem;
+        }
+
+        .header .navbar a:hover {
+            background: var(--bg);
+        }
+
+        .home .content {
+            text-align: center;
+        }
+
+    }
+
+    @media (max-width:450px) {
+
+        html {
+            font-size: 50%;
+        }
+    }
+</style>
+
+<body>
+
+    <nav>
+        <div class="logo">
+           
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fa fa-bars"></i>
+        </label>
+        <ul>
+           <li><a href="{% url 'firstpage' %}">Home</a></li>
+           <li><a href="{% url 'base' %}">Logout</a></li>
+           
+        </ul>
+     </nav>
+
+
+     <div style="width:100%; height:600px; padding:20px; text-align:center; border: 10px solid #787878; background-color: lavenderblush;">
+        <div style="width:100%; height:550px; padding:60px; text-align:center; border: 5px solid #787878;background-color: rgb(179, 195, 245);">
+               <span style="font-size:50px; font-weight:bold; background-color: rgb(230, 230, 230);">Certificate of Completion</span>
+               <br><br>
+               <span style="font-size:25px">This is to certify that</span>
+               <br><br>
+               <span style="font-size:30px;"><b><h3>{{userdetail.firstname}}</h3></b></span><br/>
+               <span style="font-size:25px">has completed the course</span> <br/><br/>
+               <span style="font-size:30px"><b>{{cource3.courcenames}}</b></span> <br/><br/>
+               <span style="font-size:30px">{{cource3.coursedsp}}</span> <br/><br/>
+               <span style="font-size:25px">dated</span><br>
+              <span style="font-size:30px">10-02-2022</span>
+              
+        </div>
+       
+        </div>
+        <center>
+        <button class="btn">Download Your Certificate</button></center>
+   
+</body>
+
+</html>
+
+

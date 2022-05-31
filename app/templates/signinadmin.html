@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+   
+   
+
+
+    <div class="login-form">
+        <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Sign In For Admin</h1>
+            <div class="form-group">
+                <input type="text" name="first_name" placeholder="First-Name">
+                <span class="input-icon"><i class="fa fa-user"></i></span>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="last_name" placeholder="Last-Name">
+                <span class="input-icon"><i class="fa fa-user-o"></i></span>
+            </div>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="User Name">
+                <span class="input-icon"><i class="fa fa-user-o"></i></span>
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="E-mail Address">
+                <span class="input-icon"><i class="fa fa-envelope"></i></span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Create Password">
+                <span class="input-icon"><i class="fa fa-unlock-alt"></i></span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="cpassword" placeholder="Retype Password">
+                <span class="input-icon"><i class="fa fa-lock"></i></span>
+            </div>
+
+            <button class="login-btn">Sign In</button>
+            <a class="reset-psw" href="{% url 'loginadmin' %}">Already Have An Account?</a>
+            <div class="seperator"><b>or</b></div>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class='row'>
+                <div class="col-md-12">
+                    <center>
+                        <div class="alert alert-warning" role="alert">
+
+                            <center>
+                                <h1>
+                                    {{message}}
+                                </h1>
+
+                        </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+            {% endif %}
+            {% block body %}
+            {% endblock%}
+        </form>
+    </div>

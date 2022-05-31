@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   {% load static %}
+   <title>Admin panel dashboard card design usign html and css - www.pakainfo.com</title>
+   <link rel="stylesheet" type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="{% static 'css/style3.css' %}" type="text/css">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,400,500,600" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+   <nav>
+      <div class="logo">
+         Project Django
+      </div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+         <i class="fa fa-bars"></i>
+      </label>
+      <ul>
+         <li><a class="active" href="{% url 'dash' %}">Home</a></li>
+         <li><a href="{% url 'logout' %}">Logout</a></li>
+
+      </ul>
+   </nav>
+
+   <div class="main-part">
+      <div class="cpanel">
+         <div class="icon-part">
+            <i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+            <small></small>
+
+         </div>
+         <div class="card-content-part">
+            <a href="{% url 'show' %}">Platform </a>
+         </div>
+      </div>
+      <div class="cpanel cpanel-green">
+         <div class="icon-part">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i><br>
+            <small></small>
+
+         </div>
+         <div class="card-content-part">
+            <a href="{% url 'cshow' %}">Course</a>
+         </div>
+      </div>
+      <div class="cpanel cpanel-orange">
+         <div class="icon-part">
+            <i class="fa fa-play-circle-o" aria-hidden="true"></i><br>
+            <small></small>
+
+         </div>
+         <div class="card-content-part">
+            <a href="{% url 'tshow' %}">Tutorial</a>
+         </div>
+      </div>
+      <div class="cpanel cpanel-blue">
+         <div class="icon-part">
+            <i class="fa fa-question-circle" aria-hidden="true"></i><br>
+            <small></small>
+
+         </div>
+         <div class="card-content-part">
+            <a href="{% url 'qashow' %}">Q & A</a>
+         </div>
+      </div>
+
+   </div>
+</body>
+

@@ -1,0 +1,89 @@
+<html>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <head>
+        {% load static %}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style3.css' %}" type="text/css">
+
+    </head>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card p-3 mt-3">
+                    <form method="post" action="/app/update3/{{tutorial.tutorialid}}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <center>
+                            <h1 class="text-success"> Edit Tutorial</h1>
+                            <hr>
+                        </center>
+                        <!-- <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                            <i class="fa fa-angle-double-right prefix"></i>
+                            <input class="md-textarea form-control" rows="1" value="{{platformid.platformid}}">
+                            <label for="form21">ID</label>
+                        </div> -->
+
+                        <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                            <i class="fa fa-angle-double-right prefix"></i>
+                            <input  id="text" name="vname" class="md-textarea form-control" rows="1" value="{{tutorial.videoname}}">
+                            <label for="form21">Video Name</label>
+                        </div>
+
+                        
+                        <div class="md-form amber-textarea active-amber-textarea">
+                            <i class="fa fa-pencil-alt prefix"></i>
+                            <input id="text" name="vdsp" class="md-textarea form-control" rows="8" value="{{tutorial.videodsp}}">
+                            <label for="form22">Video D E S C R I P T I O N</label>
+                        </div>
+
+                        <select class="form-control" name="cname" >
+                            {% for i in cource3 %}
+                            <option value="{{i.courcenames}}">{{i.courcenames}}</option>
+                            {% endfor %}
+                            
+                        </select> 
+                        <label>Cource Name</label>
+                        <br>
+
+                        <div class="md-form amber-textarea active-amber-textarea">
+                            <i class="fa fa-pencil-alt prefix"></i>
+                            <input type="file" name="video1" class="md-textarea form-control" rows="1" value="">
+                            <label for="form22">File</label>
+                            <span>{{tutorial.videos}}</span>
+                        </div>
+
+
+
+                        
+
+                                                    
+                            
+
+
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 mt-4">
+                                    <button type="submit" class="btn btn-success w-100">A D D</button>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpG…

@@ -1,0 +1,280 @@
+<html>
+
+<head>
+    <title>Simple Quiz App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+    <script>
+
+
+
+
+        function getanswers() {
+            document.getElementById("UserAnswers").innerHTML = "";
+            var e = document.getElementsByTagName("input");
+            for (i = 0; i <= e.length; i++) {
+                if (e[i].type == "radio") {
+                    if (e[i].checked) {
+                        document.getElementById("UserAnswers").innerHTML += "the option you selected is:-- " + e[i].name + ""+ e[i].id;
+                        $(".rb").show();
+                       
+                        
+
+                    }
+                }
+            }
+        }
+
+        $(".rb").attr("disabled", true);
+        $(document).ready(function () {
+            $("#b1").click(function () {
+              
+
+                
+            });
+        });
+        
+  
+    </script>
+
+
+</head>
+<style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    } 
+    nav{
+      display: flex;
+      height: 80px;
+      width: 100%;
+      background:rgb(95, 110, 250);
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px 0 100px;
+      flex-wrap: wrap;
+    }
+    nav .logo{
+      color: #fff;
+      font-size: 35px;
+      font-weight: 600;
+      margin-left: -40px;
+    }
+    nav ul{
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    nav ul li{
+      margin: 0 5px;
+    }
+    nav ul li a{
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+      color: #111;
+      background: rgb(255, 255, 255);
+    }
+    nav .menu-btn i{
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: none;
+    }
+    input[type="checkbox"]{
+      display: none;
+    }
+    @media (max-width: 1000px){
+      nav{
+        padding: 0 40px 0 50px;
+      }
+    }
+    @media (max-width: 920px) {
+      nav .menu-btn i{
+        display: block;
+      }
+      #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+      }
+      nav ul{
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #111;
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+      }
+      #click:checked ~ ul{
+        left: 0;
+      }
+      nav ul li{
+        width: 100%;
+        margin: 40px 0;
+      }
+      nav ul li a{
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        
+      }
+      #click:checked ~ ul li a{
+        margin-left: 0px;
+      }
+      nav ul li a.active,
+      nav ul li a:hover{
+        background: none;
+        color: rgb(240, 154, 25);
+      }
+    } 
+
+
+
+    /* media queries  */
+    @media (max-width:991px) {
+
+        html {
+            font-size: 55%;
+        }
+
+        .header {
+            padding: 2rem;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+    }
+
+    @media (max-width:768px) {
+
+        #menu-btn {
+            display: initial;
+        }
+
+        .header .navbar {
+            position: absolute;
+            top: 115%;
+            right: 2rem;
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            border: var(--border);
+            border-radius: .5rem;
+            width: 30rem;
+            transform: scale(0);
+            transform-origin: top right;
+            opacity: 0;
+        }
+
+        .header .navbar.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .header .navbar a {
+            font-size: 2rem;
+            display: block;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: .5rem;
+        }
+
+        .header .navbar a:hover {
+            background: var(--bg);
+        }
+
+        .home .content {
+            text-align: center;
+        }
+
+    }
+
+    @media (max-width:450px) {
+
+        html {
+            font-size: 50%;
+        }
+    }
+</style>
+
+<body>
+
+    <nav>
+        <div class="logo">
+           
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fa fa-bars"></i>
+        </label>
+        <ul>
+           <li><a href="{% url 'firstpage' %}">Home</a></li>
+          
+           
+        </ul>
+     </nav>
+
+
+    <div class="container">
+        <h1 class="text-danger mt-3"></h1>
+        <hr>
+        <div>
+            {% for i in questions %}
+            <table>
+                <tr>
+                    <td class="text-primary"> {{i.question}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb1" id="Option1" value="{{i.option1}}">{{i.option1}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb2" id="Option2" value="{{i.option2}}">{{i.option2}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb3"  id="Option3" value="{{i.option3}}">{{i.option3}}</td>
+                </tr>
+
+                <tr>
+                    <td><label name="ans" class="rb" style="display:none ; color : green"><b>the answer Is :
+                            </b><b>{{i.answers}}</b></label></td>
+                </tr>
+
+            </table>
+            <hr>
+            {% endfor %}
+
+            <input type="submit" class="btn btn-success" value="Submit" id="b1" onclick="getanswers()">
+            <center>
+                <a href="{% url 'certi' %}">
+                <input type="submit" class="btn btn-danger" value="Click Here" id="b2" onclick="alert('you have compleated your exam')">
+            </a>
+            </center>
+            <br>
+            <b id="UserAnswers"></b>
+        </div>
+    </div>
+   
+</body>
+
+</html>
+
+
+   

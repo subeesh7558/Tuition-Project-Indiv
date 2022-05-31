@@ -1,0 +1,128 @@
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style3.css' %}" type="text/css">
+</head>
+
+<nav>
+    <div class="logo">
+       Project Django
+    </div>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+       <i class="fa fa-bars"></i>
+    </label>
+    <ul>
+       <li><a class="active" href="{% url 'dash' %}">Home</a></li>
+       
+    
+
+    </ul>
+ </nav>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card p-3 mt-3">
+                <center>
+                    <h1 class="text-danger">Q & A</h1>
+                    
+                    <hr>
+                    
+                </center>
+                <a href="{% url 'qa' %}">
+                    <button type="button" class='btn btn-warning w-100 mb-4'>
+                        Add a Question
+                    </button>
+                </a>
+                <div class="table-responsive">
+                    
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            
+                            <tr>
+                                
+                                <th>ID</th>
+                                <th>Tutorial Name</th>
+                                <th>Question</th>
+                                <th>Answer</th>
+                                <th>Option1</th>
+                                <th>Option2</th>
+                                <th>Option3</th>
+                                <th>Action</th>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in questions %}
+                            
+                            
+                            
+                            <tr>
+                               
+                                
+
+                                <td>{{i.questionsid}}</td>
+                                <td>{{i.tutorialid.videoname}}</td>
+                                <td>{{i.question}}</td>
+                                <td>{{i.answers}}</td>
+                                <td>{{i.option1}}</td>
+                                <td>{{i.option2}}</td>
+                                <td>{{i.option3}}</td>
+                                
+                            
+                                
+                               
+                                <!-- <td>
+                                    <a href="/app/editcource/{{i.courceid}}">
+                                        <button type="button" class='btn btn-success w-90 mt-3 mb-4'>
+                                            EDIT
+                                        </button>
+                                    </a> -->
+                                    <td>
+                                    <a href="/app/deleteq/{{i.questionsid}}">
+                                        <button type="button" class='btn btn-danger w-80'>
+                                            DELETE
+                                        </button>
+                                    </a>
+                                </td>
+
+                                
+                            </tr>
+                            {% endfor%}
+                           
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
